@@ -1,0 +1,178 @@
+# FHIR GraphQL Schema. Version 4.6.0
+
+# import the types from 'types.graphql'
+
+type Account {
+  id: ID
+  meta: Meta
+  implicitRules: uri  _implicitRules: ElementBase
+  language: code  _language: ElementBase
+  text: Narrative
+  contained: [Resource]
+  extension: [Extension]
+  modifierExtension: [Extension]
+  identifier: [Identifier]
+  status: code  _status: ElementBase
+  type: CodeableConcept
+  name: String  _name: ElementBase
+  subject: [Reference]
+  servicePeriod: Period
+  coverage: [AccountCoverage]
+  owner: Reference
+  description: String  _description: ElementBase
+  guarantor: [AccountGuarantor]
+  partOf: Reference
+}
+
+type AccountCoverage {
+  id: ID
+  extension: [Extension]
+  modifierExtension: [Extension]
+  coverage: Reference!
+  priority: positiveInt  _priority: ElementBase
+}
+
+type AccountGuarantor {
+  id: ID
+  extension: [Extension]
+  modifierExtension: [Extension]
+  party: Reference!
+  onHold: Boolean  _onHold: ElementBase
+  period: Period
+}
+
+input AccountInput {
+  id: ID
+  meta: MetaInput
+  implicitRules: uri  _implicitRules: ElementBase
+  language: code  _language: ElementBase
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  identifier: [IdentifierInput]
+  status: code  _status: ElementBase
+  type: CodeableConceptInput
+  name: String  _name: ElementBase
+  subject: [ReferenceInput]
+  servicePeriod: PeriodInput
+  coverage: [AccountCoverageInput]
+  owner: ReferenceInput
+  description: String  _description: ElementBase
+  guarantor: [AccountGuarantorInput]
+  partOf: ReferenceInput
+}
+
+input AccountCoverageInput {
+  id: ID
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  coverage: ReferenceInput!
+  priority: positiveInt  _priority: ElementBase
+}
+
+input AccountGuarantorInput {
+  id: ID
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  party: ReferenceInput!
+  onHold: Boolean  _onHold: ElementBase
+  period: PeriodInput
+}
+
+type AccountReadType {
+  Account(id: ID!): Account
+}
+
+type AccountListType {
+  AccountList(_filter: String
+    identifier: [token]
+    name: [String]
+    owner: [reference]
+    patient: [reference]
+    period: [date]
+    status: [token]
+    subject: [reference]
+    type: [token]
+    _text: [special]
+    _content: [special]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [uri]
+    _query: [special]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [Account]
+}
+
+type AccountConnectionType {
+  AccountConection(_filter: String
+    identifier: [token]
+    name: [String]
+    owner: [reference]
+    patient: [reference]
+    period: [date]
+    status: [token]
+    subject: [reference]
+    type: [token]
+    _text: [special]
+    _content: [special]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [uri]
+    _query: [special]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): AccountConnection
+}
+
+type AccountConnection {
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [AccountEdge]
+}
+
+type AccountEdge {
+  mode: String
+  score: Float
+  resource: Account
+}
+
+type AccountCreateType {
+  AccountCreate(resource: AccountInput): AccountCreation
+}
+
+type AccountCreation {
+  location: String
+  resource: Account
+  information: OperationOutcome
+}
+
+type AccountUpdateType {
+  AccountUpdate(id: ID, resource: AccountInput): AccountUpdate
+}
+
+type AccountUpdate {
+  resource: Account
+  information: OperationOutcome
+}
+
+type AccountDeleteType {
+  AccountDelete(id: ID): AccountDelete
+}
+
+type AccountDelete {
+  information: OperationOutcome
+}
+

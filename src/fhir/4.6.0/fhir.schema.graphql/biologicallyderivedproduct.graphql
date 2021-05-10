@@ -1,0 +1,208 @@
+# FHIR GraphQL Schema. Version 4.6.0
+
+# import the types from 'types.graphql'
+
+type BiologicallyDerivedProduct {
+  id: ID
+  meta: Meta
+  implicitRules: uri  _implicitRules: ElementBase
+  language: code  _language: ElementBase
+  text: Narrative
+  contained: [Resource]
+  extension: [Extension]
+  modifierExtension: [Extension]
+  identifier: [Identifier]
+  productCategory: code  _productCategory: ElementBase
+  productCode: CodeableConcept
+  status: code  _status: ElementBase
+  request: [Reference]
+  quantity: Int  _quantity: ElementBase
+  parent: [Reference]
+  collection: BiologicallyDerivedProductCollection
+  processing: [BiologicallyDerivedProductProcessing]
+  manipulation: BiologicallyDerivedProductManipulation
+  storage: [BiologicallyDerivedProductStorage]
+}
+
+type BiologicallyDerivedProductCollection {
+  id: ID
+  extension: [Extension]
+  modifierExtension: [Extension]
+  collector: Reference
+  source: Reference
+  collectedDateTime: dateTime  _collectedDateTime: ElementBase
+  collectedPeriod: Period
+}
+
+type BiologicallyDerivedProductProcessing {
+  id: ID
+  extension: [Extension]
+  modifierExtension: [Extension]
+  description: String  _description: ElementBase
+  procedure: CodeableConcept
+  additive: Reference
+  timeDateTime: dateTime  _timeDateTime: ElementBase
+  timePeriod: Period
+}
+
+type BiologicallyDerivedProductManipulation {
+  id: ID
+  extension: [Extension]
+  modifierExtension: [Extension]
+  description: String  _description: ElementBase
+  timeDateTime: dateTime  _timeDateTime: ElementBase
+  timePeriod: Period
+}
+
+type BiologicallyDerivedProductStorage {
+  id: ID
+  extension: [Extension]
+  modifierExtension: [Extension]
+  description: String  _description: ElementBase
+  temperature: decimal  _temperature: ElementBase
+  scale: code  _scale: ElementBase
+  duration: Period
+}
+
+input BiologicallyDerivedProductInput {
+  id: ID
+  meta: MetaInput
+  implicitRules: uri  _implicitRules: ElementBase
+  language: code  _language: ElementBase
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  identifier: [IdentifierInput]
+  productCategory: code  _productCategory: ElementBase
+  productCode: CodeableConceptInput
+  status: code  _status: ElementBase
+  request: [ReferenceInput]
+  quantity: Int  _quantity: ElementBase
+  parent: [ReferenceInput]
+  collection: BiologicallyDerivedProductCollectionInput
+  processing: [BiologicallyDerivedProductProcessingInput]
+  manipulation: BiologicallyDerivedProductManipulationInput
+  storage: [BiologicallyDerivedProductStorageInput]
+}
+
+input BiologicallyDerivedProductCollectionInput {
+  id: ID
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  collector: ReferenceInput
+  source: ReferenceInput
+  collectedDateTime: dateTime  _collectedDateTime: ElementBase
+  collectedPeriod: PeriodInput
+}
+
+input BiologicallyDerivedProductProcessingInput {
+  id: ID
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  description: String  _description: ElementBase
+  procedure: CodeableConceptInput
+  additive: ReferenceInput
+  timeDateTime: dateTime  _timeDateTime: ElementBase
+  timePeriod: PeriodInput
+}
+
+input BiologicallyDerivedProductManipulationInput {
+  id: ID
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  description: String  _description: ElementBase
+  timeDateTime: dateTime  _timeDateTime: ElementBase
+  timePeriod: PeriodInput
+}
+
+input BiologicallyDerivedProductStorageInput {
+  id: ID
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  description: String  _description: ElementBase
+  temperature: decimal  _temperature: ElementBase
+  scale: code  _scale: ElementBase
+  duration: PeriodInput
+}
+
+type BiologicallyDerivedProductReadType {
+  BiologicallyDerivedProduct(id: ID!): BiologicallyDerivedProduct
+}
+
+type BiologicallyDerivedProductListType {
+  BiologicallyDerivedProductList(_filter: String
+    _text: [special]
+    _content: [special]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [uri]
+    _query: [special]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [BiologicallyDerivedProduct]
+}
+
+type BiologicallyDerivedProductConnectionType {
+  BiologicallyDerivedProductConection(_filter: String
+    _text: [special]
+    _content: [special]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [uri]
+    _query: [special]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): BiologicallyDerivedProductConnection
+}
+
+type BiologicallyDerivedProductConnection {
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [BiologicallyDerivedProductEdge]
+}
+
+type BiologicallyDerivedProductEdge {
+  mode: String
+  score: Float
+  resource: BiologicallyDerivedProduct
+}
+
+type BiologicallyDerivedProductCreateType {
+  BiologicallyDerivedProductCreate(resource: BiologicallyDerivedProductInput): BiologicallyDerivedProductCreation
+}
+
+type BiologicallyDerivedProductCreation {
+  location: String
+  resource: BiologicallyDerivedProduct
+  information: OperationOutcome
+}
+
+type BiologicallyDerivedProductUpdateType {
+  BiologicallyDerivedProductUpdate(id: ID, resource: BiologicallyDerivedProductInput): BiologicallyDerivedProductUpdate
+}
+
+type BiologicallyDerivedProductUpdate {
+  resource: BiologicallyDerivedProduct
+  information: OperationOutcome
+}
+
+type BiologicallyDerivedProductDeleteType {
+  BiologicallyDerivedProductDelete(id: ID): BiologicallyDerivedProductDelete
+}
+
+type BiologicallyDerivedProductDelete {
+  information: OperationOutcome
+}
+

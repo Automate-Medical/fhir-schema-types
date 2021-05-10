@@ -1,0 +1,260 @@
+# FHIR GraphQL Schema. Version 4.6.0
+
+# import the types from 'types.graphql'
+
+type MessageDefinition {
+  id: ID
+  meta: Meta
+  implicitRules: uri  _implicitRules: ElementBase
+  language: code  _language: ElementBase
+  text: Narrative
+  contained: [Resource]
+  extension: [Extension]
+  modifierExtension: [Extension]
+  url: uri  _url: ElementBase
+  identifier: [Identifier]
+  version: String  _version: ElementBase
+  name: String  _name: ElementBase
+  title: String  _title: ElementBase
+  replaces: canonical  _replaces: [ElementBase]
+  status: code  _status: ElementBase
+  experimental: Boolean  _experimental: ElementBase
+  date: dateTime  _date: ElementBase
+  publisher: String  _publisher: ElementBase
+  contact: [ContactDetail]
+  description: markdown  _description: ElementBase
+  useContext: [UsageContext]
+  jurisdiction: [CodeableConcept]
+  purpose: markdown  _purpose: ElementBase
+  copyright: markdown  _copyright: ElementBase
+  base: canonical  _base: ElementBase
+  parent: canonical  _parent: [ElementBase]
+  eventCoding: Coding
+  eventUri: uri  _eventUri: ElementBase
+  category: code  _category: ElementBase
+  focus: [MessageDefinitionFocus]
+  responseRequired: code  _responseRequired: ElementBase
+  allowedResponse: [MessageDefinitionAllowedResponse]
+  graph: canonical  _graph: [ElementBase]
+}
+
+type MessageDefinitionFocus {
+  id: ID
+  extension: [Extension]
+  modifierExtension: [Extension]
+  code: code  _code: ElementBase
+  profile: canonical  _profile: ElementBase
+  min: unsignedInt  _min: ElementBase
+  max: String  _max: ElementBase
+}
+
+type MessageDefinitionAllowedResponse {
+  id: ID
+  extension: [Extension]
+  modifierExtension: [Extension]
+  message: canonical  _message: ElementBase
+  situation: markdown  _situation: ElementBase
+}
+
+input MessageDefinitionInput {
+  id: ID
+  meta: MetaInput
+  implicitRules: uri  _implicitRules: ElementBase
+  language: code  _language: ElementBase
+  text: NarrativeInput
+  contained: [ResourceInput]
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  url: uri  _url: ElementBase
+  identifier: [IdentifierInput]
+  version: String  _version: ElementBase
+  name: String  _name: ElementBase
+  title: String  _title: ElementBase
+  replaces: canonical  _replaces: [ElementBase]
+  status: code  _status: ElementBase
+  experimental: Boolean  _experimental: ElementBase
+  date: dateTime  _date: ElementBase
+  publisher: String  _publisher: ElementBase
+  contact: [ContactDetailInput]
+  description: markdown  _description: ElementBase
+  useContext: [UsageContextInput]
+  jurisdiction: [CodeableConceptInput]
+  purpose: markdown  _purpose: ElementBase
+  copyright: markdown  _copyright: ElementBase
+  base: canonical  _base: ElementBase
+  parent: canonical  _parent: [ElementBase]
+  eventCoding: CodingInput
+  eventUri: uri  _eventUri: ElementBase
+  category: code  _category: ElementBase
+  focus: [MessageDefinitionFocusInput]
+  responseRequired: code  _responseRequired: ElementBase
+  allowedResponse: [MessageDefinitionAllowedResponseInput]
+  graph: canonical  _graph: [ElementBase]
+}
+
+input MessageDefinitionFocusInput {
+  id: ID
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  code: code  _code: ElementBase
+  profile: canonical  _profile: ElementBase
+  min: unsignedInt  _min: ElementBase
+  max: String  _max: ElementBase
+}
+
+input MessageDefinitionAllowedResponseInput {
+  id: ID
+  extension: [ExtensionInput]
+  modifierExtension: [ExtensionInput]
+  message: canonical  _message: ElementBase
+  situation: markdown  _situation: ElementBase
+}
+
+type MessageDefinitionReadType {
+  MessageDefinition(id: ID!): MessageDefinition
+}
+
+type MessageDefinitionListType {
+  MessageDefinitionList(_filter: String
+    category: [token]
+    context: [token]
+    context_quantity: [quantity]
+    context_type: [token]
+    context_type_quantity: [composite]
+    context_type_value: [composite]
+    date: [date]
+    description: [String]
+    event: [token]
+    focus: [token]
+    identifier: [token]
+    jurisdiction: [token]
+    name: [String]
+    parent: [reference]
+    publisher: [String]
+    status: [token]
+    title: [String]
+    url: [uri]
+    version: [token]
+    context: [token]
+    context_quantity: [quantity]
+    context_type: [token]
+    context_type_quantity: [composite]
+    context_type_value: [composite]
+    date: [date]
+    description: [String]
+    identifier: [token]
+    jurisdiction: [token]
+    name: [String]
+    publisher: [String]
+    status: [token]
+    title: [String]
+    url: [uri]
+    version: [token]
+    _text: [special]
+    _content: [special]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [uri]
+    _query: [special]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): [MessageDefinition]
+}
+
+type MessageDefinitionConnectionType {
+  MessageDefinitionConection(_filter: String
+    category: [token]
+    context: [token]
+    context_quantity: [quantity]
+    context_type: [token]
+    context_type_quantity: [composite]
+    context_type_value: [composite]
+    date: [date]
+    description: [String]
+    event: [token]
+    focus: [token]
+    identifier: [token]
+    jurisdiction: [token]
+    name: [String]
+    parent: [reference]
+    publisher: [String]
+    status: [token]
+    title: [String]
+    url: [uri]
+    version: [token]
+    context: [token]
+    context_quantity: [quantity]
+    context_type: [token]
+    context_type_quantity: [composite]
+    context_type_value: [composite]
+    date: [date]
+    description: [String]
+    identifier: [token]
+    jurisdiction: [token]
+    name: [String]
+    publisher: [String]
+    status: [token]
+    title: [String]
+    url: [uri]
+    version: [token]
+    _text: [special]
+    _content: [special]
+    _id: [token]
+    _lastUpdated: [date]
+    _profile: [uri]
+    _query: [special]
+    _security: [token]
+    _source: [uri]
+    _tag: [token]
+    _sort: String
+    _count: Int
+    _cursor: String): MessageDefinitionConnection
+}
+
+type MessageDefinitionConnection {
+  count: Int
+  offset: Int
+  pagesize: Int
+  first: ID
+  previous: ID
+  next: ID
+  last: ID
+  edges: [MessageDefinitionEdge]
+}
+
+type MessageDefinitionEdge {
+  mode: String
+  score: Float
+  resource: MessageDefinition
+}
+
+type MessageDefinitionCreateType {
+  MessageDefinitionCreate(resource: MessageDefinitionInput): MessageDefinitionCreation
+}
+
+type MessageDefinitionCreation {
+  location: String
+  resource: MessageDefinition
+  information: OperationOutcome
+}
+
+type MessageDefinitionUpdateType {
+  MessageDefinitionUpdate(id: ID, resource: MessageDefinitionInput): MessageDefinitionUpdate
+}
+
+type MessageDefinitionUpdate {
+  resource: MessageDefinition
+  information: OperationOutcome
+}
+
+type MessageDefinitionDeleteType {
+  MessageDefinitionDelete(id: ID): MessageDefinitionDelete
+}
+
+type MessageDefinitionDelete {
+  information: OperationOutcome
+}
+
