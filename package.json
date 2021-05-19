@@ -1,16 +1,20 @@
 {
-  "name": "ts-fhir",
+  "name": "fhir",
   "version": "0.0.0",
   "description": "TypeScript definitions for FHIR",
-  "main": "index.js",
+  "main": "types/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node index.js"
+    "prepare": "tsc -p src/tsconfig.json && node src/build/index.js",
+    "build": "npm run prepare; cd types; tsc -p ./tsconfig.json"
   },
   "author": "Automate Medical Inc.",
   "license": "MIT",
   "dependencies": {
-    "lodash": "^4.17.21",
-    "quicktype-core": "^6.0.70"
+    "typescript": "^4.2.4"
+  },
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "^15.0.2"
   }
 }
