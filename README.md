@@ -1,4 +1,4 @@
-# fhir.d.ts
+# fhir-schema-types
 
 An npm-published set of TypeScript definitions for Fast Healthcare Interoperability Resources (FHIR).
 
@@ -36,6 +36,7 @@ This library exposes type and interface definitions in TypeScript for all of the
 - [ ] Support definitions for the Graphql definitions provided in 4.6.0+
 - [ ] Define a contributor license agreement
 - [X] Publish NPM module
+- [ ] NPM build should include a bundle + sourcemaps instead of the raw build
 
 ## Contributing
 
