@@ -10,8 +10,11 @@ Install this into an existing TypeScript project with:
 
 The definitions are exported in the root level of the module, by version. You can import the latest _stable_ version by default. You can also import named versions.
 
-`import FHIR from '@automate-medical/fhir-schema-types'`
-`import { R4 as FHIR } from '@automate-medical/fhir-schema-types'`
+```
+import FHIR from '@automate-medical/fhir-schema-types'
+
+import { R4 as FHIR } from '@automate-medical/fhir-schema-types'
+```
 
 You can also import specific versions.
 
